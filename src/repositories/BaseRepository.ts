@@ -7,16 +7,16 @@ export abstract class BaseRepository<T> implements IWrite<T>, IRead<T> {
     async create(item: T): Promise<boolean> {
         throw new Error('Method not implemented.');
     }
-    updateOne(id: String, item: T): Promise<boolean> {
+    async updateOne(id: String, item: T): Promise<boolean> {
         throw new Error('Method not implemented.');
     }
-    deleteOne(id: String): Promise<boolean> {
+    async deleteOne(id: String): Promise<boolean> {
         throw new Error('Method not implemented.');
     }
-    find(): Promise<[T]> {
+    async find(): Promise<[T]> {
         throw new Error('Method not implemented.');
     }
-    findOne(id: String): Promise<T> {
+    async findOne(id: String): Promise<T> {
         throw new Error('Method not implemented.');
     }
 }

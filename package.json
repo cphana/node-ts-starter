@@ -4,7 +4,10 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "build": "tsc",
+        "dev": "tsc --watch & NODE_ENV=development nodemon dist",
+        "test": "tsc && ./node_modules/.bin/mocha dist/**/*.spec.js",
+        "lint": "./node_modules/.bin/tslint -c tslint.json 'src/**/**.ts'"
     },
     "keywords": [],
     "author": "",
@@ -23,6 +26,7 @@
     },
     "devDependencies": {
         "@types/jest": "^24.0.16",
+        "@types/koa": "^2.0.49",
         "@types/node": "^12.6.8",
         "jest": "^24.8.0",
         "nodemon": "^1.19.1",

@@ -10,9 +10,14 @@ export abstract class BaseController {
         this.execute();
     }
 
-    protected jsonResponse(code: number, message: string) {
-        this.ctx.status = code;
-        this.ctx.body = { message };
+    protected errorResponse(status: number, message: string) {
+        this.ctx.status = status;
+        this.ctx.body = {
+            error: {
+                status: status,
+                message: message,
+            },
+        };
     }
 
     protected ok<T>(dto?: T) {
@@ -28,5 +33,10 @@ export abstract class BaseController {
         this.ctx.body = {
             message: error.toString(),
         };
+    }
+
+    protected forbidden(message?: string) {
+        this.ctx.status = 403;
+        throw new Error(message ? message : 'Forbidden');
     }
 }
